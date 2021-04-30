@@ -1,0 +1,16 @@
+#!/bin/bash
+
+IP="${1:-10.23.20.10}"
+SPACE="${2:-1}"
+
+REGEX='/space="'${SPACE}'"/!d; s/.*active_preset="([0-9]{1,2})".*/\1/p'
+DATA="<setlevels><get_space_info /></setlevels>"
+
+set -o pipefail
+PRESET=$(curl -sm 5 -H "Content-Type: text/plain" -d "${DATA}" http://${IP}/action.cgi | sed -nE "$REGEX")
+ret=$?
+
+[ $ret -eq 0 ] && echo $PRESET || echo "ERR"
+
+exit $ret
+

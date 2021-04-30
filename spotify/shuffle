@@ -1,0 +1,12 @@
+#!/usr/bin/env osascript
+
+on run argv
+	set spottyShuffle to true
+	
+	if (count of argv) >= 1 then
+		set spottyShuffle to item 1 of argv
+	end if
+
+	tell application "Spotify" to set shuffling to (spottyShuffle)
+		
+end run

@@ -1,0 +1,5 @@
+#!/usr/bin/env osascript
+
+on run argv
+	tell application "Spotify" to pause
+end run

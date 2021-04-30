@@ -1,0 +1,19 @@
+#!/usr/bin/env osascript
+
+
+# Helper functions
+on isRunning(appName)
+	tell application "System Events" to (name of processes) contains appName
+end isRunning
+
+on waitForApp(appName)
+	tell application "System Events"
+		repeat until visible of process (appName) is false
+			set visible of process (appName) to false
+		end repeat
+	end tell
+end waitForApp
+
+on run argv
+	if not isRunning("Spotify") then waitForApp("Spotify")
+end run

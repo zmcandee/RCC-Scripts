@@ -1,0 +1,13 @@
+#!/bin/bash
+
+IP="${1:-10.23.20.10}"
+SPACE="${2:-1}"
+DIMMER="${3:-1}"
+LEVEL="${4:-100}"
+
+DATA="<setlevels><set udn=\"${DIMMER}\" space=\"${SPACE}\" level=\"${LEVEL}\"/></setlevels>"
+
+curl -sm 3 -H "Content-Type: text/plain" -d "${DATA}" http://${IP}/action.cgi
+
+ret=$?
+[ $ret -eq 52 ] && { exit 0; } || { exit $ret; }

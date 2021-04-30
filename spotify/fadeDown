@@ -1,0 +1,34 @@
+#!/usr/bin/env osascript
+
+on run argv
+	set fadeSecs to 3
+	set targetVol to 0
+	
+	if (count of argv) >= 2 then
+		set targetVol to item 2 of argv
+	end if
+	if (count of argv) >= 1 then
+		set fadeSecs to item 1 of argv
+	end if
+
+	tell application "Spotify"
+		set currentVol to sound volume
+		
+		# We if we are currently softer than the target volume bail out
+		if (currentVol as number) <= (targetVol as number) then return 
+		
+		# Find the actual delay length for each step based on total fade time divided by the number of steps
+		set fadeDelay to fadeSecs / (currentVol - targetVol) * 2
+
+		repeat with newVol from currentVol to targetVol by -2
+			# Spotify volume will wrap around (ie 102 will set the volume to 2 and -1 will set it to 99)
+			# To prevent volume glitches make sure we aren't crossing 0 or 100
+			if newVol < 0 then
+				set sound volume to 0
+			else
+				set sound volume to newVol
+			end if
+			delay (fadeDelay)
+		end repeat
+	end tell
+end run

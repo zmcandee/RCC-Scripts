@@ -1,0 +1,28 @@
+#!/bin/bash
+
+PLAYLIST="spotify:playlist:6hcFyKwUzRjVgy8YTua9M8" # Redeemer City Church
+VOLUME=100
+FADETIME=3
+SHUFFLE=true
+REPEAT=true
+
+DIR=${0%/*}
+NAME=${0##*/}
+log() { echo "$(date) [${NAME}]  $@" >> ${DIR}/spotify.log; }
+
+log 'launching spotify'
+${DIR}/spotify/launch
+
+log "setting volume=0 repeat=${REPEAT} shuffle=${SHUFFLE}"
+${DIR}/spotify/volume 0
+${DIR}/spotify/repeat ${REPEAT}
+${DIR}/spotify/shuffle ${SHUFFLE}
+
+log "playing ${PLAYLIST}"
+${DIR}/spotify/play "${PLAYLIST}"
+
+log "fading volume to ${VOLUME} over ${FADETIME} seconds"
+${DIR}/spotify/fadeUp ${FADETIME} ${VOLUME}
+
+log 'complete'
+

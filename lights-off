@@ -1,0 +1,43 @@
+#!/bin/bash
+
+IP=10.23.20.10
+SPACE=1
+ACTION="deactivate"
+
+DIR=${0%/*}
+NAME=${0##*/}
+
+log() { echo "$(date) [${NAME}]  $@" >> ${DIR}/lights.log; }
+
+
+log 'finding active preset'
+PRESET=$(${DIR}/lights/active-preset $IP $SPACE); ret=$?
+
+if [ $ret -eq 0 ] && [ "$PRESET" != "ERR" ]; then
+	log "success found $PRESET"
+else
+	log "failed ($ret)"
+      	exit $ret
+fi
+
+log "${ACTION} preset ${PRESET} in space ${SPACE}"
+${DIR}/lights/preset $IP $SPACE "$PRESET" $ACTION; ret=$?
+
+if [ $ret -eq 0 ]; then
+	log "success" 
+else
+	log "failed ($ret)"
+	exit $ret	
+fi
+
+
+log 'releasing all levels'
+${DIR}/lights/release $IP; ret=$?
+
+if [ $ret -eq 0 ]; then
+	log "success" 
+else
+	log "failed ($ret)"
+        exit $ret	
+fi
+

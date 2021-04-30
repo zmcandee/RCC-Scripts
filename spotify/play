@@ -1,0 +1,26 @@
+#!/usr/bin/env osascript
+
+# run is a special name that is called when the applescript loads and is passed any arguments (argv) from the 
+# commandline if not opened like an app
+on run argv
+	# Set the defaults for the fade then override them if anything was passed on the commandline
+	set spottyTrack to null #track can be a track/album/artist/playlist
+	set spottyContext to null #context affects where the next track is chosen from
+	
+	if (count of argv) >= 2 then
+		set spottyContext to item 2 of argv
+	end if
+	if (count of argv) >= 1 then
+		set spottyTrack to item 1 of argv
+	end if
+
+	tell application "Spotify"
+		if not spottyContext is null then
+			play track (spottyTrack) in context (spottyContext)
+		else if not spottyTrack is null then
+			play track (spottyTrack)
+		else
+			play
+		end if
+	end tell
+end run

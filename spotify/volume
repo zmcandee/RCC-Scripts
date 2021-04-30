@@ -1,0 +1,15 @@
+#!/usr/bin/env osascript
+
+# run is a special name that is called when the applescript loads and is passed any arguments (argv) from the 
+# commandline if not opened like an app
+on run argv
+	# Set the defaults for the fade then override them if anything was passed on the commandline
+	set targetVol to 100
+	
+	if (count of argv) >= 1 then
+		set targetVol to item 1 of argv
+	end if
+
+	tell application "Spotify" to set sound volume to targetVol
+		
+end run

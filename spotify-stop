@@ -1,0 +1,19 @@
+#!/bin/bash
+
+VOLUME=0
+FADETIME=3
+
+DIR=${0%/*}
+NAME=${0##*/}
+log() { echo "$(date) [${NAME}]  $@" >> ${DIR}/spotify.log; }
+
+
+
+log "fading volume to ${VOLUME} over ${FADETIME} seconds"
+${DIR}/spotify/fadeDown ${FADETIME} ${VOLUME}
+
+log "pausing"
+${DIR}/spotify/pause
+
+log 'complete'
+

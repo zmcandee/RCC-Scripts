@@ -1,0 +1,12 @@
+#!/usr/bin/env osascript
+
+on run argv
+	set spottyRepeat to true
+	
+	if (count of argv) >= 1 then
+		set spottyRepeat to item 1 of argv
+	end if
+
+	tell application "Spotify" to set repeating to (spottyRepeat)
+		
+end run

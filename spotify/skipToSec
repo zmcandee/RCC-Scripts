@@ -1,0 +1,21 @@
+#!/usr/bin/env osascript
+
+# run is a special name that is called when the applescript loads and is passed any arguments (argv) from the 
+# commandline if not opened like an app
+on run argv
+	set targetSecs to 3
+	
+	if (count of argv) >= 1 then
+		set targetSecs to item 1 of argv
+	end if
+
+	tell application "Spotify"
+		set currentTrackLength to duration of current track
+		
+		if (targetSecs as number) > (currentTrackLength as number) then
+			set player position to currentTrackLength
+		else
+			set player position to targetSecs
+		end if
+	end tell
+end run

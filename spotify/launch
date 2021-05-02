@@ -15,5 +15,8 @@ on waitForApp(appName)
 end waitForApp
 
 on run argv
-	if not isRunning("Spotify") then waitForApp("Spotify")
+	if not isRunning("Spotify") then
+		tell application "Spotify" to launch
+		waitForApp("Spotify")
+	end if
 end run

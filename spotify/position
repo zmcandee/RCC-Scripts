@@ -12,7 +12,7 @@ on run argv
 	end if
 
 	tell application "Spotify"
-		set currentTrackLength to duration of current track
+		set currentTrackLength to duration of current track / 1000
     
     if (targetSecs as number) < 0 then
       set targetSecs to (currentTrackLength as number) + (targetSecs as number)

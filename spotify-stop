@@ -10,7 +10,7 @@ log() { echo "$(date) [${NAME}]  $@" >> ${DIR}/spotify.log; }
 
 
 log "fading volume to ${VOLUME} over ${FADETIME} seconds"
-${DIR}/spotify/fadeDown ${FADETIME} ${VOLUME}
+${DIR}/spotify/vol fd ${VOLUME} ${FADETIME}
 
 log "pausing"
 ${DIR}/spotify/pause

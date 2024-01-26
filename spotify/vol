@@ -52,9 +52,11 @@ on run argv
 			if (targetVol as number) > (currentVol as number) then
 				set fadeDelay to fadeSecs / (targetVol - currentVol) * 2
 				set volInc to 2
-			else
+			else if (targetVol as number) < (currentVol as number) then
 				set fadeDelay to fadeSecs / (currentVol - targetVol) * 2
 				set volInc to -2
+			else
+				return
 			end if
 
 			repeat with newVol from currentVol to targetVol by volInc

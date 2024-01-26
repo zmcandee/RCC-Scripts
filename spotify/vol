@@ -36,6 +36,8 @@ on run argv
 		else if (count of argv) >= 3 then
 			set targetVol to item 2 of argv
 			set fadeSecs to item 3 of argv
+		else if mode is not in {"fd", "fade"} then
+			set targetVol to 10
 		else
 			set targetVol to 100
 			set fadeSecs to 3

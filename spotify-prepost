@@ -14,7 +14,7 @@ log 'launching spotify'
 ${DIR}/spotify/launch
 
 log "setting volume=0 repeat=${REPEAT} shuffle=${SHUFFLE}"
-${DIR}/spotify/volume 0
+${DIR}/spotify/vol 0
 ${DIR}/spotify/repeat ${REPEAT}
 ${DIR}/spotify/shuffle ${SHUFFLE}
 
@@ -22,10 +22,10 @@ log "playing ${PLAYLIST}"
 ${DIR}/spotify/play "${PLAYLIST}"
 
 log "skip ahead to 5 secs"
-${DIR}/spotify/skipToSec 5
+${DIR}/spotify/position 5
 
 log "fading volume to ${VOLUME} over ${FADETIME} seconds"
-${DIR}/spotify/fadeUp ${FADETIME} ${VOLUME}
+${DIR}/spotify/vol fd ${VOLUME} ${FADETIME} 
 
 log 'complete'
 

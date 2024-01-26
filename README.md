@@ -61,9 +61,9 @@ Controls the spotify apps volume fader either fading gently or by immediately ju
 
 
 #### play
-Plays the provided track/album/artist/playlist URI in Spotify optionally allows passing a second URI to define the context (ie <track URI> in [playlist URI] context will play the track then queue songs from the playlist).
+Plays the provided track/album/artist/playlist URI in Spotify optionally allows passing a second URI to define the context (ie [track URI] in [playlist URI] context will play the specific track from inside the playlist).
 ```bash
-./spotify/play <URI> [context URI]
+./spotify/play [URI] [context URI]
 ```
 
 #### pause

@@ -40,7 +40,7 @@ Launches Spotify if not already open and immediately hides the window.
 ```bash
 ./spotify/launch
 ```
-#### fadeUp/fadeDown/volume
+#### fadeUp/fadeDown/volume **[DEPRECIATED]**
 Controls the spotify apps volume fader either fading gently or by immediately jumping to the given volume (0-100).
 ```bash
 ./spotify/volume [volume=100]
@@ -48,6 +48,17 @@ Controls the spotify apps volume fader either fading gently or by immediately ju
 ./spotify/fadeDown [seconds=3] [volume=0]
 ```
 **Note:** Fades do not return until the fade is complete so excessively long fades may cause Companion to time out
+
+#### vol
+Controls the spotify apps volume fader either fading gently or by immediately jumping to the given volume (0-100).  Fade (fd) direction is dependent on the current volume and target volume.
+```bash
+./spotify/vol [volume=100]
+./spotify/vol up [volume=10]
+./spotify/vol dn [volume=10]
+./spotify/vol fd [volume=100] [seconds=3]
+```
+**Note:** Fades do not return until the fade is complete so excessively long fades may cause Companion to time out
+
 
 #### play
 Plays the provided track/album/artist/playlist URI in Spotify optionally allows passing a second URI to define the context (ie <track URI> in [playlist URI] context will play the track then queue songs from the playlist).
@@ -67,11 +78,22 @@ Toggles the repeat or shuffle buttons.  By default they turn on when called but 
 ./spotify/repeat [enable=true]
 ./spotify/shuffle [enable=true] 
 ```
-#### skipToSec
+
+#### skipToSec **[DEPRECIATED]**
 Skips a specified number of seconds into the current track.
 ```bash
 ./spotify/skipToSec [seconds=3]
 ```
+
+#### position
+Skips a specified number of seconds into the current track.  Negative values will set the position to that number of seconds from the end.
+```bash
+./spotify/positon [seconds=3]
+
+# Skip to the last 5 seconds of the track
+./spotify/position -5
+```
+
 
 ## Contributing
 

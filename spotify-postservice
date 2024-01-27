@@ -1,8 +1,8 @@
 #!/bin/bash
 
-PLAYLIST="spotify:playlist:6hcFyKwUzRjVgy8YTua9M8" # Redeemer City Church
+PLAYLIST="spotify:playlist:0JN69ahQbHMNyElBYj57Hz" # Redeemer City Church
 VOLUME=100
-FADETIME=3
+FADETIME=2
 SHUFFLE=true
 REPEAT=true
 
@@ -20,7 +20,6 @@ ${DIR}/spotify/shuffle ${SHUFFLE}
 
 log "playing ${PLAYLIST}"
 ${DIR}/spotify/play "${PLAYLIST}"
-
 log "skip ahead to 5 secs"
 ${DIR}/spotify/position 5
 

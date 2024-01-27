@@ -7,7 +7,9 @@ RCC-Scripts is a collection of Apple scripts and bash scripts to control various
 Either clone the repo or download and extract the zip file.
 
 ```bash
-git clone --depth=1 https://github.com/zmcandee/RCC-Scripts.git
+git clone https://github.com/zmcandee/RCC-Scripts.git
+cd RCC-Scripts
+git checkout RiverCity
 ```
 
 ## Usage

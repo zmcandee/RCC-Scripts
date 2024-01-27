@@ -10,6 +10,7 @@ on run argv
 	if (count of argv) >= 1 then
 		set targetSecs to item 1 of argv
 	end if
+	delay (0.1)
 
 	tell application "Spotify"
 		set currentTrackLength to duration of current track / 1000
